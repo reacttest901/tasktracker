@@ -13,7 +13,9 @@ export default function Textinput() {
     const [entered,enterredtask] = useState('')
     const [enter,entereddate]= useState('')
     const [enteredvaluedate,setenteredvaluedate]=useState([])
-    const [tasks,settasks]= useState([])
+    const [tasks,settasks]= useState([
+        
+    ])
     const [toggle,changetoggle] = useState('false')
     useEffect(()=>{
         readData();
@@ -74,13 +76,13 @@ export default function Textinput() {
     }
     const deletetask = async (key) => {
         settasks(tasks.filter((task) => task.key !== key));
-        console.log(tasks)
+        // const data = [...tasks,{key:tasks.key,value:tasks.value,date:tasks.dates}]
+        // settasks(data)
+        
         
         let stringdata = JSON.stringify(tasks);
         await AsyncStorage.setItem("test",stringdata);
-        
-
-    }
+   }
 
     const cleardata = async () =>{
         await AsyncStorage.removeItem("test");
